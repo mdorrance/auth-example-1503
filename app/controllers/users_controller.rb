@@ -10,6 +10,8 @@ class UsersController < ApplicationController
       redirect_to @user # user_path(@user)
     else
       # re-render new view if validations don't pass
+      flash.now[:errors] = @user.errors.full_messages.join(", ")
+      render :new
     end
   end
 
